@@ -11,9 +11,11 @@ var burger = {
             cb(res);
         });
     },
-    updateOne: function (columnSelect, columnValue, condition, cb) {
-        orm.updateOne("burgers", columnSelect, columnValue, condition, function (res) {
+    updateOne: function (columnValue, condition, cb) {
+        orm.updateOne("burgers", "devoured", columnValue, condition, function (res) {
             cb(res);
         });
     }
 }
+
+module.exports = burger;

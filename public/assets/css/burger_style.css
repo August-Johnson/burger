@@ -1,0 +1,74 @@
+* {
+    box-sizing: border-box;
+  }
+
+body {
+    background-color: orange;
+}
+
+h1 {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    text-align: center;
+    font-size: 180%;
+}
+
+.burger-container:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+
+.burger-column {
+    float: left;
+    width: 50%;
+    margin-bottom: 20px;
+  }
+
+  .burger-column.not-eaten {
+     text-align: center;
+  }
+
+  .burger-column.already-eaten {
+      text-align: center;
+}
+
+.burger-row {
+    position: relative;
+    padding-bottom: 0px;
+}
+
+.burger-row h3 {
+    background-color: white;
+    margin-right: 20px;
+    margin-bottom: 0px;
+    padding-right: 40px;
+    padding-left: 40px;
+    padding-top: 10px;
+    padding-bottom: 30px;
+    display: inline-block;
+    width: 60%;
+}
+
+.eat-burger {
+    position: absolute;
+    padding: 10px;
+    bottom: 0;
+}
+
+.add-burger {
+    text-align: center;
+}
+
+.add-burger button {
+    background-color: lightblue;
+    padding: 5px 20px;
+    font-size: 110%;
+    font-weight: 700;
+    margin-top: 10px;
+}
+
+.add-burger p {
+    font-size: 120%;
+    font-weight: 600;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
