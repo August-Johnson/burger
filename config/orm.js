@@ -1,4 +1,4 @@
-var connection = require("./connection");
+var connection = require("../config/connection.js");
 
 function queryQuestionMarks(valueNum) {
     var valueArr = [];
@@ -7,7 +7,7 @@ function queryQuestionMarks(valueNum) {
         valueArr.push("?");
     }
 
-    return arr.toString();
+    return valueArr.toString();
 }
 
 var orm = {
@@ -15,35 +15,44 @@ var orm = {
     selectAll: function (tableName, cb) {
         var queryString = "SELECT * FROM " + tableName + ";";
 
+        console.log(queryString);
+
         connection.query(queryString, function (err, result) {
             if (err) throw err;
             cb(result);
         });
     },
     // adding a row to a table
-    insertOne: function (tableName, columnSelect, columnValues, cb) {
+    insertOne: function (tableName, columns, values, cb) {
+
         var queryString = "INSERT INTO " + tableName;
+
         queryString += " (";
-        queryString += columnSelect;
+        queryString += columns.toString();
         queryString += ") ";
         queryString += "VALUES (";
-        queryString += queryQuestionMarks(columnValues.length);
-        queryString += ")";
+        queryString += queryQuestionMarks(values.length);
+        queryString += ");";
 
+        console.log(queryString);
 
-        connection.query(queryString, columnValues, function (err, results) {
-            if (err) throw err;
+        connection.query(queryString, values, function (err, results) {
+            if (err) {
+                throw err;
+            }
             cb(results);
         });
     },
     // updating data in a table
-    updateOne: function(tableName, columnSelect, columnValue, whereCondition, cb) {
+    updateOne: function (tableName, columnSelect, columnValue, whereCondition, cb) {
         var queryString = "UPDATE " + tableName;
-        queryString += "SET " + columnSelect; 
+        queryString += "SET " + columnSelect;
         queryString += " = " + columnValue;
         queryString += " WHERE " + whereCondition;
 
-        connection.query(queryString, function(err, results) {
+        console.log(queryString);
+
+        connection.query(queryString, function (err, results) {
             if (err) throw err;
             cb(results);
         })

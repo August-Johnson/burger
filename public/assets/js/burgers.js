@@ -15,13 +15,15 @@ $(".eat-burger").on("click", function(event) {
         console.log("Burger with id of " + id + " has been eaten!");
         location.reload();
     });
+});
 
     // adding burger (insert into database)
-    $(".add-burger").on("submit", function(event) {
+    $(".create-burger").on("submit", function(event) {
+
         event.preventDefault();
 
         var newBurger = {
-            name: $("#burg").val().trim()
+            name: $("#burg").val().trim(),
         };
 
         $.ajax("/api/burgers", {
@@ -33,22 +35,4 @@ $(".eat-burger").on("click", function(event) {
             location.reload();
         });
     });
-});
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 });
