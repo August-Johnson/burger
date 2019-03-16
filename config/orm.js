@@ -44,11 +44,10 @@ var orm = {
         });
     },
     // updating data in a table
-    updateOne: function (tableName, columnSelect, columnValue, whereCondition, cb) {
-        var queryString = "UPDATE " + tableName;
-        queryString += "SET " + columnSelect;
-        queryString += " = " + columnValue;
-        queryString += " WHERE " + whereCondition;
+    updateOne: function (table, colNewValue, condition, cb) {
+        var queryString = "UPDATE " + table;
+        queryString += " SET " + colNewValue
+        queryString += " WHERE " + condition;
 
         console.log(queryString);
 

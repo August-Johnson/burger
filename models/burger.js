@@ -11,8 +11,8 @@ var burger = {
             cb(res);
         });
     },
-    updateOne: function (columnValue, condition, cb) {
-        orm.updateOne("burgers", "devoured", columnValue, condition, function (res) {
+    updateOne: function (colNewValue, condition, cb) {
+        orm.updateOne("burgers", colNewValue, condition, function (res) {
             cb(res);
         });
     }

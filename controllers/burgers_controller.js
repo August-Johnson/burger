@@ -9,11 +9,11 @@ router.get("/", function(req, res) {
 
     burger.selectAll(function(data) {
 
-        var burgersObj = {
+        var burgerObj = {
             burgers: data
         };
-        console.log(burgersObj);
-        res.render("index", burgersObj);
+        
+        res.render("index", burgerObj);
     });
 });
 
@@ -30,8 +30,10 @@ router.post("/api/burgers", function(req, res) {
 router.put("/api/burgers/:id", function(req, res) {
 
     var condition = "id = " + req.params.id;
+    var newState = "devoured=";
+    newState += req.body.devoured;
 
-    burger.updateOne(req.body.devoured, condition, function(results) {
+    burger.updateOne(newState, condition, function(results) {
 
         if (results.changedRows === 0) {
             return res.status(404).end();
