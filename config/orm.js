@@ -1,5 +1,6 @@
 var connection = require("../config/connection.js");
 
+// Function for how many question marks to put inside a query depending on the amount of column values used.
 function queryQuestionMarks(valueNum) {
     var valueArr = [];
 
@@ -10,8 +11,9 @@ function queryQuestionMarks(valueNum) {
     return valueArr.toString();
 }
 
+// ORM functions
 var orm = {
-    // selecting all data from a table
+    // Selecting all data from a table
     selectAll: function (tableName, cb) {
         var queryString = "SELECT * FROM " + tableName + ";";
 
@@ -22,7 +24,7 @@ var orm = {
             cb(result);
         });
     },
-    // adding a row to a table
+    // Adding a row to a table
     insertOne: function (tableName, columns, values, cb) {
 
         var queryString = "INSERT INTO " + tableName;
@@ -43,10 +45,10 @@ var orm = {
             cb(results);
         });
     },
-    // updating data in a table
-    updateOne: function (table, colNewValue, condition, cb) {
+    // Updating data in a table
+    updateOne: function (table, newColumnValue, condition, cb) {
         var queryString = "UPDATE " + table;
-        queryString += " SET " + colNewValue
+        queryString += " SET " + newColumnValue
         queryString += " WHERE " + condition;
 
         console.log(queryString);
